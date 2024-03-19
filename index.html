@@ -17,6 +17,27 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
+
+        <!-- Email API -->
+        <script src="https://smtpjs.com/v3/smtp.js">
+        </script>
+        
+        <script type="text/javascript">
+            function sendEmail() {
+                Email.send({
+                    Host: "smtp.gmail.com",
+                    Username: "healthlinebatam@gmail.com",
+                    Password: "Nonok123",
+                    To: 'healthlinebatam@gmail.com',
+                    From: "healthlinebatam@gmail.com",
+                    Subject: "Sending Email using javascript",
+                    Body: "Well that was easy!!",
+                })
+                    .then(function (message) {
+                        alert("mail sent successfully")
+                    });
+            }
+        </script>
         
     </head>
     <body id="page-top">
@@ -87,6 +108,10 @@
                         <div>@healthline.sys</div>
                     </div>
                 </div>
+
+                <form method="post">
+                    <input type="button" value="Send Email" onclick="sendEmail()" />
+                </form>
             </div>
         </section>
         <!-- Footer-->
