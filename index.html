@@ -19,23 +19,54 @@
         <link href="css/styles.css" rel="stylesheet" />
 
         <!-- Email API -->
-        <script src="https://smtpjs.com/v3/smtp.js">
-        </script>
+        <!-- <script src="https://smtpjs.com/v3/smtp.js">
+        </script> -->
         
+        <script src="https://cdn.jsdelivr.net/npm/smtp-server@3.13.3/lib/smtp-server.min.js"></script>
+
         <script type="text/javascript">
+            console.log(123);
+            
             function sendEmail() {
-                Email.send({
-                    Host: "smtp.gmail.com",
-                    Username: "healthlinebatam@gmail.com",
-                    Password: "Nonok123",
-                    To: 'healthlinebatam@gmail.com',
-                    From: "healthlinebatam@gmail.com",
-                    Subject: "Sending Email using javascript",
-                    Body: "Well that was easy!!",
-                })
-                    .then(function (message) {
-                        alert("mail sent successfully")
-                    });
+                console.log(smtp);
+                const mail = {
+                    to: 'healthlinebatam@gmail.com',
+                    from: "healthlinebatam@gmail.com",
+                    subject: "Sending Email using javascript",
+                    text: "Well that was easy!!",
+                }
+                const credentials = {
+                    host: 'smtp.gmail.com',
+                    port: 465,
+                    secure: true,
+                    auth: {
+                        user: "healthlinebatam@gmail.com",
+                        pass: "Nonok123",
+                        
+                    }
+                }
+console.log(123);
+                smtp.connect(credentials)
+                    .then(info => {
+                        // connected, credentials OK 
+                    })
+                
+                smtp.sendMail(email)
+                    .then(info => console.log(info))
+                    .catch(err => console.error(err))
+
+                // Email.send({
+                //     Host: "smtp.gmail.com",
+                //     Username: "healthlinebatam@gmail.com",
+                //     Password: "Nonok123",
+                //     To: 'healthlinebatam@gmail.com',
+                //     From: "healthlinebatam@gmail.com",
+                //     Subject: "Sending Email using javascript",
+                //     Body: "Well that was easy!!",
+                // })
+                //     .then(function (message) {
+                //         alert("mail sent successfully")
+                //     });
             }
         </script>
         
@@ -135,9 +166,9 @@
                     </div>
                 </div>
 
-                <form method="post">
-                    <input type="button" value="Send Email" onclick="sendEmail()" />
-                </form>
+                <!-- <form method="post">
+                    <input type="button" value="Send Email" onclick="sendEmail()"/>
+                </form> -->
             </div>
         </section>
         <!-- Footer-->
